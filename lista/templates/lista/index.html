@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block conteudo%}
+    <h1 class="mt-5">Lista dos filmes</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Sobrenome</th>
+            <th>Telefone</th>
+            <th>Categoria</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for filme in filmes %}
+                <tr>
+                    <td>
+                        <a href="{% url 'ver_filme' filme.id %}">{{ filme.nome }}</a>
+                    </td>
+                    <td>{{ filme.direcao }}</td>
+                    <td>{{ filme.ano }}</td>
+                    <td>{{ filme.genero }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+{%endblock%}
