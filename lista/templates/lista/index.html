@@ -1,29 +1,50 @@
 {% extends 'base.html' %}
-{% block conteudo%}
+{% block conteudo %}
     <h1 class="mt-5">Lista dos filmes</h1>
 
     <table class="table">
         <thead>
         <tr>
             <th>Nome</th>
-            <th>Sobrenome</th>
-            <th>Telefone</th>
+            <th>Direção</th>
+            <th>Ano</th>
             <th>Categoria</th>
         </tr>
         </thead>
         <tbody>
             {% for filme in filmes %}
-                <tr>
-                    <td>
-                        <a href="{% url 'ver_filme' filme.id %}">{{ filme.nome }}</a>
-                    </td>
-                    <td>{{ filme.direcao }}</td>
-                    <td>{{ filme.ano }}</td>
-                    <td>{{ filme.genero }}</td>
-                </tr>
+                {% if filme.mostrar %}
+                    <tr>
+                        <td>
+                            <a href="{% url 'ver_filme' filme.id %}">{{ filme.nome }}</a>
+                        </td>
+                        <td>{{ filme.direcao }}</td>
+                        <td>{{ filme.ano }}</td>
+                        <td>{{ filme.genero }}</td>
+                    </tr>
+                {% endif %}
             {% endfor %}
         </tbody>
     </table>
 
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+      {% for pagina in filmes.paginator.page_range %}
+      {% if filmes.number == pagina %}
+        <li class="page-item disabled">
+        </li>
+        <li class="page-item active">
+            <a class="page-link" href="?p={{ pagina }}">{{pagina}}</a>
+        </li>
+      {% else %}
+        <li class="page-item disabled">
+        </li>
+        <li class="page-item">
+            <a class="page-link" href="?p={{ pagina }}">{{pagina}}</a>
+        </li>
+      {% endif %}
+      {% endfor %}
+  </ul>
+</nav>
 
-{%endblock%}
+{% endblock %}

@@ -20,6 +20,7 @@ class ListaDosFilmes(models.Model):
     resumo = models.TextField(blank=True)
     genero = models.CharField(max_length=55)
     categoria = models.ForeignKey(Categoria, on_delete=models.DO_NOTHING)
+    mostrar = models.BooleanField(default=True)
 
     def __str__(self):
         return self.nome
