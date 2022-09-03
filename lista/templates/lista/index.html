@@ -5,6 +5,7 @@
     <table class="table">
         <thead>
         <tr>
+            <th>ID</th>
             <th>Nome</th>
             <th>Direção</th>
             <th>Ano</th>
@@ -13,16 +14,15 @@
         </thead>
         <tbody>
             {% for filme in filmes %}
-                {% if filme.mostrar %}
-                    <tr>
-                        <td>
-                            <a href="{% url 'ver_filme' filme.id %}">{{ filme.nome }}</a>
-                        </td>
-                        <td>{{ filme.direcao }}</td>
-                        <td>{{ filme.ano }}</td>
-                        <td>{{ filme.genero }}</td>
-                    </tr>
-                {% endif %}
+                <tr>
+                    <td>{{ filme.id }}</td>
+                    <td>
+                        <a href="{% url 'ver_filme' filme.id %}">{{ filme.nome }}</a>
+                    </td>
+                    <td>{{ filme.direcao }}</td>
+                    <td>{{ filme.ano }}</td>
+                    <td>{{ filme.genero }}</td>
+                </tr>
             {% endfor %}
         </tbody>
     </table>
@@ -34,13 +34,13 @@
         <li class="page-item disabled">
         </li>
         <li class="page-item active">
-            <a class="page-link" href="?p={{ pagina }}">{{pagina}}</a>
+            <a class="page-link" href="?p={{ pagina }}&termo={{ request.GET.termo }}">{{pagina}}</a>
         </li>
       {% else %}
         <li class="page-item disabled">
         </li>
         <li class="page-item">
-            <a class="page-link" href="?p={{ pagina }}">{{pagina}}</a>
+            <a class="page-link" href="?p={{ pagina }}&termo={{ request.GET.termo }}">{{pagina}}</a>
         </li>
       {% endif %}
       {% endfor %}
