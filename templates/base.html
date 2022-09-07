@@ -3,7 +3,7 @@
 <html lang="pt">
 
 <head>
-    <title>Top filmes</title>
+    <title>Melhores filmes</title>
     {% include 'parciais/_head.html' %}
 
 </head>
@@ -20,10 +20,11 @@
           <div class="form-group row">
             <div class="col-12">
               <input class="form-control"
-              type="search" value="{{ request.GET.termo }}"
-              id="search-input"
-              placeholder="Digite sua pesquisa"
-              name="termo">
+                type="search" value="{{ request.GET.termo }}"
+                id="search-input"
+                placeholder="Digite sua pesquisa"
+                name="termo">
+              {% include 'parciais/_messages.html' %}
             </div>
           </div>
         </form>

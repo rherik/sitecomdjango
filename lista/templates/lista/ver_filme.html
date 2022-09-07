@@ -1,24 +1,33 @@
 {% extends 'base.html' %}
 {% block conteudo%}
         <h1 class="mt-5">{{ filme.nome }}</h1>
+        {% if filme.foto %}
+            <p>
+                <img src="{{ filme.foto.url }}" style="max-width: 250px; height: auto;">
+            </p>
+        {% endif %}
         <dl>
-          <dt>ID</dt>
-          <dd>{{ filme.id }}</dd>
+          <!--<dt>ID</dt>
+          <dd>{{ filme.id }}</dd>-->
 
           <dt>Direção</dt>
-          <dd>{{ filme.direcao }}</dd>
+            <dd>{{ filme.direcao }}</dd>
 
           <dt>Ano de Lançamento</dt>
-          <dd>{{ filme.ano }}</dd>
+            <dd>{{ filme.ano }}</dd>
 
-          <dt>Data criação</dt>
-          <dd>{{ filme.data_criacao|date:'d/m/Y' }}</dd>
+          <!--<dt>Data criação</dt>
+          <dd>{{ filme.data_criacao|date:'d/m/Y' }}</dd>-->
 
-          <dt>Categoria</dt>
-          <dd>{{ filme.categoria }}</dd>
+          <dt>Gênero</dt>
+            <dd>{{ filme.genero }}</dd>
 
-          <dt>Descrição</dt>
-          <dd>{{ filme.descricao }}</dd>
+            <dt>Categoria</dt>
+            <dd>{{ filme.categoria }}</dd>
+
+          <dt>Resumo</dt>
+            <dd>{{ filme.resumo }}</dd>
+
         </dl>
 
 {%endblock%}

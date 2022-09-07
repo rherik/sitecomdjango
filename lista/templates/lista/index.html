@@ -5,7 +5,7 @@
     <table class="table">
         <thead>
         <tr>
-            <th>ID</th>
+            <!--<th>ID</th>-->
             <th>Nome</th>
             <th>Direção</th>
             <th>Ano</th>
@@ -15,7 +15,7 @@
         <tbody>
             {% for filme in filmes %}
                 <tr>
-                    <td>{{ filme.id }}</td>
+                    <!--<td>{{ filme.id }}</td>-->
                     <td>
                         <a href="{% url 'ver_filme' filme.id %}">{{ filme.nome }}</a>
                     </td>
